@@ -36,6 +36,9 @@ class TabsManager(QTabWidget):
         self.set_tab_color(tab_index=self.tabs_ids["Audio"], color_string="#BABABA")
         self.set_tab_color(tab_index=self.tabs_ids["Attachment"], color_string="#BABABA")
         self.set_tab_color(tab_index=self.tabs_ids["Chapter"], color_string="#BABABA")
+        self.set_tab_color(tab_index=self.tabs_ids["Video"], color_string="#FFFFFF")
+        self.set_tab_color(tab_index=self.tabs_ids["Subtitle"], color_string="#FFFFFF")
+        self.set_tab_color(tab_index=self.tabs_ids["Mux Setting"], color_string="#FFFFFF")
         self.setting_button = SettingButton()
         self.setCornerWidget(self.setting_button, Qt.TopRightCorner)
         self.setStyleSheet("QTabWidget::right-corner{bottom: 2px;}")
@@ -53,10 +56,10 @@ class TabsManager(QTabWidget):
         self.tabBar().setTabTextColor(tab_index, QColor(color_string))
 
     def connect_signals(self):
-        self.attachment_tab.activation_signal.connect(self.change_attachment_activated_state)
-        self.subtitle_tab.activation_signal.connect(self.change_subtitle_activated_state)
-        self.audio_tab.activation_signal.connect(self.change_audio_activated_state)
-        self.chapter_tab.activation_signal.connect(self.change_chapter_activated_state)
+        # self.attachment_tab.activation_signal.connect(self.change_attachment_activated_state)
+        # self.subtitle_tab.activation_signal.connect(self.change_subtitle_activated_state)
+        # self.audio_tab.activation_signal.connect(self.change_audio_activated_state)
+        # self.chapter_tab.activation_signal.connect(self.change_chapter_activated_state)
         self.mux_setting_tab.start_muxing_signal.connect(self.tt)
         self.mux_setting_tab.update_task_bar_progress_signal.connect(self.update_task_bar_progress_signal.emit)
         self.mux_setting_tab.update_task_bar_paused_signal.connect(self.update_task_bar_paused_signal.emit)
@@ -68,25 +71,25 @@ class TabsManager(QTabWidget):
 
     def change_attachment_activated_state(self, new_state):
         if new_state:
-            self.set_tab_color(tab_index=self.tabs_ids["Attachment"], color_string="#000000")
+            self.set_tab_color(tab_index=self.tabs_ids["Attachment"], color_string="#FFFFFF")
         else:
             self.set_tab_color(tab_index=self.tabs_ids["Attachment"], color_string="#BABABA")
 
     def change_subtitle_activated_state(self, new_state):
         if new_state:
-            self.set_tab_color(tab_index=self.tabs_ids["Subtitle"], color_string="#000000")
+            self.set_tab_color(tab_index=self.tabs_ids["Subtitle"], color_string="#FFFFFF")
         else:
             self.set_tab_color(tab_index=self.tabs_ids["Subtitle"], color_string="#BABABA")
 
     def change_audio_activated_state(self, new_state):
         if new_state:
-            self.set_tab_color(tab_index=self.tabs_ids["Audio"], color_string="#000000")
+            self.set_tab_color(tab_index=self.tabs_ids["Audio"], color_string="#FFFFFF")
         else:
             self.set_tab_color(tab_index=self.tabs_ids["Audio"], color_string="#BABABA")
 
     def change_chapter_activated_state(self, new_state):
         if new_state:
-            self.set_tab_color(tab_index=self.tabs_ids["Chapter"], color_string="#000000")
+            self.set_tab_color(tab_index=self.tabs_ids["Chapter"], color_string="#FFFFFF")
         else:
             self.set_tab_color(tab_index=self.tabs_ids["Chapter"], color_string="#BABABA")
 

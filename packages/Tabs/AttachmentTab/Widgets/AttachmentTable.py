@@ -105,7 +105,7 @@ class AttachmentTable(TableWidget):
             self.set_row_file_name(file_name=files_names_list[i], row_index=i, is_checked=files_names_checked_list[i])
             self.set_row_file_size(file_size=files_size_list[i], row_index=i)
             if files_names_checked_list[i]:
-                self.update_row_text_color(row_index=i, color_string="#000000")
+                self.update_row_text_color(row_index=i, color_string="#FFFFFF")
             else:
                 self.update_row_text_color(row_index=i, color_string="#787878")
         self.show()
@@ -145,7 +145,7 @@ class AttachmentTable(TableWidget):
                         GlobalSetting.ATTACHMENT_FILES_ABSOLUTE_PATH_LIST[attachment_index])
                 elif item.checkState() == Qt.Checked:
                     GlobalSetting.ATTACHMENT_FILES_CHECKING_LIST[attachment_index] = True
-                    self.update_row_text_color(row_index=attachment_index, color_string="#000000")
+                    self.update_row_text_color(row_index=attachment_index, color_string="#FFFFFF")
                     self.update_checked_attachment_signal.emit(
                         GlobalSetting.ATTACHMENT_FILES_ABSOLUTE_PATH_LIST[attachment_index])
             self.checking_row_updates = True

@@ -4,7 +4,7 @@ import sys
 from traceback import format_exception
 from datetime import datetime
 import psutil
-from PySide2.QtGui import QFont, QFontDatabase
+from PySide2.QtGui import QFont, QFontDatabase, QPalette, QColor
 from PySide2.QtWidgets import QApplication
 from packages.Startup import GlobalFiles
 from packages.Startup.MainApplication import MainApplication
@@ -36,6 +36,23 @@ def setup_application_font():
                                                                                   "application will use default font")
         warning_dialog.execute()
 
+
+def setup_application_style():
+    palette = QPalette()
+    palette.setColor(QPalette.Window, QColor(53, 53, 53))
+    palette.setColor(QPalette.WindowText, QColor(255, 255, 255))
+    palette.setColor(QPalette.Base, QColor(25, 25, 25))
+    palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
+    palette.setColor(QPalette.ToolTipBase, QColor(255, 255, 255))
+    palette.setColor(QPalette.ToolTipText, QColor(255, 255, 255))
+    palette.setColor(QPalette.Text, QColor(255, 255, 255))
+    palette.setColor(QPalette.Button, QColor(53, 53, 53))
+    palette.setColor(QPalette.ButtonText, QColor(255, 255, 255))
+    palette.setColor(QPalette.BrightText, QColor(255, 0, 0))
+    palette.setColor(QPalette.Link, QColor(42, 130, 218))
+    palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+    palette.setColor(QPalette.HighlightedText, QColor(0, 0, 0))
+    app.setPalette(palette)
 
 def create_application():
     global app
@@ -76,5 +93,6 @@ if __name__ == "__main__":
     setup_logger()
     create_application()
     setup_application_font()
+    setup_application_style()
     create_window()
     run_application()
